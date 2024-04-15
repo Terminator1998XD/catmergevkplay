@@ -1,4 +1,4 @@
-var txt = {
+var localizationvkplay = {
   "ru":{
     reborn: "Последний шанс",
     scm: "Умножить очки x2",
@@ -18,7 +18,7 @@ var txt = {
 }
 
 function TXT(id){
-  return txt[lang][id];
+  return localizationvkplay[lang][id];
 }
 
 function hideTexts(){
