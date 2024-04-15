@@ -11,7 +11,8 @@ function openGame(id){
   }
 }
 
-function moregames(){
+function moregames(blockid){
+  moregames.blockid = blockid;
   if(moregames.gamecont == null){
     moregames.gamecont = $('#moregames').prepend($('<center>').append(getMoreGames()));
   }
@@ -22,7 +23,7 @@ function moregames(){
 }
 
 function moregamesback(){
-  $('.overlay > *:not(#moregames)').show(100);
+  $(moregames.blockid).show(100);
   $('#moregames').hide(500);
 }
 
