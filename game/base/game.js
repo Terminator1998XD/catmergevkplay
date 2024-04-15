@@ -1,5 +1,5 @@
 function Init(){
-	if(window['lang'] != null) return;
+	if(window['exp'] != null) return;
 	window.backgroundTexture = getTex('back');
 
 	window.lang = 'ru';
