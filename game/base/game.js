@@ -72,6 +72,7 @@ function Init(){
 		translateBlocks();
 		fillSettings();
 		resizeCanvas();
+		$('#proginf').remove();
 	});
 }
 

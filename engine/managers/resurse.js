@@ -17,7 +17,7 @@ class GameLoader{
       proginf = $('<div id="proginf">').css({
         'position':'absolute',
         'left':0,'top':0,'z-index':500,'width': '100%','height': '100%',
-        'background-color':'#7d7d7d','color':'white'
+        'background-color':'#67ade4','color':'white'
       });
       progressinf = $('<div id="progressinf">').css({
         'position':'absolute',
