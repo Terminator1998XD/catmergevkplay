@@ -84,7 +84,7 @@ function NewGame(){
 
 		_loseflag = false;
 
-		if(isMobile) ysdk.adv.hideBannerAdv();
+		if(isMobile) adv.hideBannerAdv();
 
 		dim.map = [curDL];
 		Cat.pool = [];
@@ -133,7 +133,7 @@ function PlayClick(){
 		$('.overlay').hide();
 		OnPause = false;
 		playMusic();
-		if(isMobile) ysdk.adv.hideBannerAdv();
+		if(isMobile) adv.hideBannerAdv();
 	});
 }
 

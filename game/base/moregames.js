@@ -17,12 +17,12 @@ function moregames(){
   }
   let gamecont = moregames.gamecont;
 
-  $('.menu > *:not(#moregames)').hide(100);
+  $('.overlay > *:not(#moregames)').hide(100);
   $('#moregames').show(500);
 }
 
 function moregamesback(){
-  $('.menu > *:not(#moregames)').show(100);
+  $('.overlay > *:not(#moregames)').show(100);
   $('#moregames').hide(500);
 }
 

@@ -63,7 +63,7 @@ function dead_advprompt(killer, prealive, postalive){
       score = score * 2;
       scoreui.text(parseInt(score));
       updlb();
-      if(isMobile) ysdk.adv.showBannerAdv();
+      if(isMobile) adv.showBannerAdv();
     },
     GoMenu, false
     );
@@ -74,7 +74,7 @@ function dead_advprompt(killer, prealive, postalive){
     $('#deadscr').show();
     $('.overlay').show(500);
     $('#pausem').hide();
-    if(isMobile) ysdk.adv.showBannerAdv();
+    if(isMobile) adv.showBannerAdv();
   }
 }
 
