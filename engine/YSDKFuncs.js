@@ -19,6 +19,12 @@ var adv = {
     adsCallback.onClose = cb.onClose;
     adsCallback.onRewarded = cb.onRewarded;
     ysdk.showAds({interstitial: false});
+  },
+  hideBannerAdv: function(){
+    console.log("Попытка скрыть стики баннер. Sticky-баннер не обнаружен.");
+  },
+  showBannerAdv: function(){
+    console.log("Попытка показать стики баннер. VKPlay Mini не поддерживает Sticky-баннер");
   }
 }
 

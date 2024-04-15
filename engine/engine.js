@@ -2,6 +2,7 @@ var canvas = document.createElement("canvas");
 var g = canvas.getContext("2d");
 document.body.appendChild(canvas);
 
+window.lang = 'en';
 resizeCanvas();
 
 var isMobile = false;
@@ -9,28 +10,58 @@ var isMobile = false;
 window.addEventListener('resize', resizeCanvas);
 
 function resizeCanvas() {
-  const defaultWidth = 720;
-  const defaultHeight = 1280;
-    if(!isMobile){
+  const overlay = $('.overlay');
 
-      // Выбрать минимальное значение для масштаба, чтобы поместить канвас в окне
-      const scale = Math.min(window.innerWidth / defaultWidth, window.innerHeight / defaultHeight);
+  if(myOrentation == orentations.vertical){
+      if(isMobile){
 
-      // Установить новую ширину и высоту канваса
-      canvas.width = defaultWidth * scale;
-      canvas.height = defaultHeight * scale;
+        canvas.width = window.innerWidth;
 
-      /*canvas.width = isMobile ? window.innerWidth : Math.min(600,window.innerWidth);
-      canvas.height = window.innerHeight;*/
-      canvas.style.marginLeft = `calc(50% - ${canvas.width / 2}px)`;
-    }
-    else {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+        if(platform != platforms.yandex){
+          if(window.innerWidth > window.innerHeight){
+            if(resizeCanvas.ovl == null){
+              const overlay = getOverlay();
+              resizeCanvas.ovl = overlay.parent();
+              overlay.append($('<p>').text(lang=='ru' ? "Игра не поддерживает альбомную ориентацию, переверните смартфон, чтобы продолжить игру" : "The game does not support landscape orientation, turn your smartphone over to continue playing"));
+              if(!OnPause){
+          			OnPause = true;
+          			updlb();
+          			$('.overlay').show(500).css({'background-color': 'rgba(0,0,0,0.7)'});
+          			$('#pausem').show();
+          		}
+            }
+            return;
+          }
+          else if(resizeCanvas.ovl != null){
+            resizeCanvas.ovl.remove();
+            resizeCanvas.ovl = null;
+          }
+        }
 
-    window.scaleX = canvas.width/defaultWidth;
-    window.scaleY = canvas.height/defaultHeight;
+        canvas.style.marginLeft = 'unset';
+        overlay.css({'left': 0});
+      }
+      else {
+
+        if(platform == platforms.yandex && canvas.height < 1081) canvas.width = Math.min(600,window.innerWidth);
+        else{
+          const scale = Math.min(window.innerWidth / gameViewport[0], window.innerHeight / gameViewport[1]);
+          canvas.width = gameViewport[0] * scale;
+        }
+
+        const str = `calc(50% - ${canvas.width / 2}px)`;
+        canvas.style.marginLeft = str;
+        overlay.css({'left': str});
+      }
+  } else {
+    canvas.width = window.innerWidth;
+  }
+
+  canvas.height = window.innerHeight;
+  window.scaleX = canvas.width/gameViewport[0];
+  window.scaleY = canvas.height/gameViewport[1];
+
+  overlay.css({'width':canvas.width+"px",'height':canvas.height+"px"});
 }
 
 var LMouseDown = false;
